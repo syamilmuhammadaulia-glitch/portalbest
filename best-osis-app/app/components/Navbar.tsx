@@ -130,7 +130,13 @@ export default function Navbar({ onEnterPortal }: NavbarProps) {
 
           {/* PERBAIKAN: Menggunakan onClick bukannya Link href="/portal" */}
           <motion.button
-            onClick={onEnterPortal}
+            onClick={() => {
+              if (onEnterPortal) {
+                onEnterPortal();
+              } else {
+                window.location.href = "/portal";
+              }
+            }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full font-bold text-xs transition-all flex items-center gap-2 shadow-md shadow-blue-200"
@@ -184,10 +190,7 @@ export default function Navbar({ onEnterPortal }: NavbarProps) {
 
             {/* Tombol Portal di Mobile */}
             <button
-              onClick={() => {
-                onEnterPortal?.();
-                setIsMobileMenuOpen(false);
-              }}
+              onClick={() => (window.location.href = "/portal")}
               className="w-full bg-blue-600 text-white py-4 rounded-xl font-bold text-sm uppercase"
             >
               Masuk Portal
