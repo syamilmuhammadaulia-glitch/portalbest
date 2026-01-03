@@ -65,7 +65,7 @@ interface Proker {
 
 export default function PortalPage() {
   // --- STATE NAVIGASI HALAMAN ---
-  const [isPortalOpen, setIsPortalOpen] = useState(false);
+  const [isPortalOpen, setIsPortalOpen] = useState(true);
 
   // --- STATE DATA ASLI KAMU ---
   const [currentUser, setCurrentUser] = useState<AppUser | null>(null);
@@ -283,23 +283,10 @@ export default function PortalPage() {
   // --- LOGIKA TAMPILAN (CONDITIONAL RENDERING) ---
 
   // 1. Tampilkan Landing Page jika portal belum dibuka
-  if (!isPortalOpen) {
-    return <LandingPage onEnterPortal={() => setIsPortalOpen(true)} />;
-  }
 
   // 2. Tampilkan Login Page jika sudah masuk portal tapi belum login
   if (!currentUser) {
-    return (
-      <div className="relative">
-        <button
-          onClick={() => setIsPortalOpen(false)}
-          className="fixed top-4 left-4 z-[100] flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-full text-xs font-bold border border-white/20 backdrop-blur-sm transition-all"
-        >
-          <HomeIcon size={14} /> Kembali ke Beranda
-        </button>
-        <LoginPage onLogin={setCurrentUser} users={users} />
-      </div>
-    );
+    return;
   }
 
   // 3. Tampilkan Dashboard jika sudah login
