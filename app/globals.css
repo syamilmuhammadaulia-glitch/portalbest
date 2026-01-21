@@ -1,70 +1,14 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+:root { --background: #f8fafc; --foreground: #0f172a; }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+html { scroll-behavior: smooth; }
+body { background: var(--background); color: var(--foreground); }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/* Perbaikan untuk Tampilan HP (Mobile) */
 @media (max-width: 768px) {
-  /* 1. Paksa Sidebar dan Konten bertumpuk (Atas-Bawah), bukan Kiri-Kanan */
-  body > div {
-    flex-direction: column !important;
-  }
-
-  /* 2. Atur Sidebar agar tidak terlalu lebar di HP */
-  aside,
-  .sidebar,
-  div[class*="sidebar"] {
-    width: 100% !important;
-    min-width: 100% !important;
-    height: auto !important;
-    padding: 15px !important;
-  }
-
-  /* 3. Atur Dashboard/Konten Utama agar mengambil layar penuh */
-  main,
-  .main-content,
-  div[class*="main"] {
-    width: 100% !important;
-    padding: 10px !important;
-    margin-left: 0 !important;
-  }
-
-  /* 4. Perkecil ukuran kartu/nama pengurus agar tidak terpotong */
-  .card,
-  div[class*="card"] {
-    width: 100% !important;
-    margin-bottom: 10px !important;
-  }
-
-  /* 5. Perkecil ukuran font menu agar pas di HP */
-  nav a,
-  .menu-item {
-    font-size: 14px !important;
-    padding: 8px !important;
-  }
-}
-html {
-  scroll-behavior: smooth;
+  body > div { flex-direction: column !important; }
+  aside { width: 100% !important; height: auto !important; position: relative !important; padding: 1rem !important; }
+  main { width: 100% !important; padding: 1rem !important; margin: 0 !important; }
 }

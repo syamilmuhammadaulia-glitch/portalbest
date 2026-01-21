@@ -1,18 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google"; // Ganti ke Inter agar kompatibel dengan v14
 import "./globals.css";
-// Pastikan path ini benar sesuai screenshot kamu (di dalam folder app)
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Konfigurasi font Inter sebagai pengganti Geist
+const inter = Inter({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -27,13 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id" className="scroll-smooth">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Navbar />
-        {/* Tambahkan padding top agar konten tidak tertutup navbar fixed */}
-        <main className="pt-20 min-h-screen">{children}</main>
-        <Footer />
+      <body className={`${inter.className} antialiased`}>
+        {/* PENTING: children harus ada di sini agar isi page.tsx muncul */}
+        {children}
       </body>
     </html>
   );
